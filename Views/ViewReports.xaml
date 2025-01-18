@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C868_WGU_Tallis_Jordan.Views.ViewReports"
+             Title="Reports">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Picker x:Name="ReportPicker" Title="Select Report" SelectedIndexChanged="OnReportPickerSelectionChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Upcoming Assessments</x:String>
+                        <x:String>Course Summary</x:String>
+                        <x:String>Term Overview</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label x:Name="ReportTitle" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            <Label x:Name="ReportTimestamp" FontSize="14" TextColor="Gray" HorizontalTextAlignment="Center" />
+
+            <StackLayout Margin="10">
+                <Grid Padding="10" BackgroundColor="LightGray" ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="HeaderColumn1" Grid.Column="0" FontAttributes="Bold" />
+                    <Label x:Name="HeaderColumn2" Grid.Column="1" FontAttributes="Bold" />
+                    <Label x:Name="HeaderColumn3" Grid.Column="2" FontAttributes="Bold" />
+                </Grid>
+
+                <CollectionView x:Name="ReportCollectionView" EmptyView="No data available.">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10" ColumnSpacing="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Text="{Binding Column1}" />
+                                <Label Grid.Column="1" Text="{Binding Column2}" />
+                                <Label Grid.Column="2" Text="{Binding Column3}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+            <Button Text="Export Report" Clicked="OnExportReportButtonClicked" HorizontalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

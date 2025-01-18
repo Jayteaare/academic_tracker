@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C868_WGU_Tallis_Jordan.Views.CourseEdit"
+             Title="Edit Course">
+
+    <NavigationPage.TitleView>
+        <Label FontSize="24" Text="Edit Course" TextColor="Black" VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10" Spacing="10">
+                <Grid BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Name" />
+                    <Entry x:Name="CourseName" Grid.Row="1" Grid.Column="1" Placeholder="Enter Course Name" />
+
+                    <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Start Date" />
+                    <DatePicker x:Name="StartDatePicker" Grid.Row="2" Grid.Column="1" />
+
+                    <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="End Date" />
+                    <DatePicker x:Name="EndDatePicker" Grid.Row="3" Grid.Column="1" />
+
+                    <Label Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Status" />
+                    <Picker x:Name="CourseStatusPicker" Title="Select a Status" Grid.Row="4" Grid.Column="1" TitleColor="Teal">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Not Started</x:String>
+                                <x:String>Planned</x:String>
+                                <x:String>In-progress</x:String>
+                                <x:String>Completed</x:String>
+                                <x:String>Dropped</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Label Grid.Row="5" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Instructor Name" />
+                    <Entry x:Name="InstructorName" Grid.Row="5" Grid.Column="1" Placeholder="Enter Instructor's Name" />
+
+                    <Label Grid.Row="6" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Instructor Phone" />
+                    <Entry x:Name="InstructorPhone" Grid.Row="6" Grid.Column="1" Placeholder="Enter Instructor's Phone" />
+
+                    <Label Grid.Row="7" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Instructor Email" />
+                    <Entry x:Name="InstructorEmail" Grid.Row="7" Grid.Column="1" Placeholder="Enter Instructor's Email" />
+
+                    <Label Grid.Row="8" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Notes" />
+                    <Editor x:Name="Notes" Grid.Row="8" Grid.Column="1" Placeholder="Enter notes here" />
+
+                    <Label Grid.Row="9" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Notifications" />
+                    <Switch x:Name="Notifications" Grid.Row="9" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" />
+                </Grid>
+
+                <Button Text="Add Assessment" x:Name="AddAssessmentButton" Clicked="AddAssessment_Clicked" HorizontalOptions="Center" Margin="0,10,0,5" />
+
+                <Label Text="Assessments" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" Margin="0,10,0,5" />
+                <CollectionView x:Name="AssessmentCollectionView" SelectionMode="Single" SelectionChanged="OnAssessmentSelected" EmptyView="No assessments available.">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5" BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Name:" />
+                                <Label Grid.Row="0" Grid.Column="1" FontSize="Medium" Text="{Binding AssessName}" VerticalTextAlignment="Center" />
+
+                                <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Type:" />
+                                <Label Grid.Row="1" Grid.Column="1" FontSize="Small" Text="{Binding Type, StringFormat='{0} Assessment'}" VerticalTextAlignment="Center" />
+
+                                <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Start Date:" />
+                                <Label Grid.Row="2" Grid.Column="1" FontSize="Small" Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" VerticalTextAlignment="Center" />
+
+                                <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="End Date:" />
+                                <Label Grid.Row="3" Grid.Column="1" FontSize="Small" Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" VerticalTextAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10" Spacing="10">
+                    <Button Text="Save" x:Name="SaveCourseButton" Clicked="SaveCourse_Clicked" />
+                    <Button Text="Cancel" x:Name="CancelCourseButton" Clicked="CancelCourse_Clicked" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

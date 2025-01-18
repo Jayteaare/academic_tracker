@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C868_WGU_Tallis_Jordan.Views.ViewTerm"
+             Title="Term View">
+
+    <NavigationPage.TitleView>
+        <Label FontSize="24" Text="Term View" TextColor="Black" VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0" Padding="10">
+                <StackLayout Spacing="10">
+                    <Grid BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="5" Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Name:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding TermName}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Start Date:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding StartDate, StringFormat='{0:M/dd/yyyy}'}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="End Date:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding EndDate, StringFormat='{0:M/dd/yyyy}'}" FontSize="Medium" VerticalTextAlignment="Center" />
+                    </Grid>
+
+                    <Label FontSize="Large" Text="Courses" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <CollectionView x:Name="CourseCollectionView"
+                                    SelectionMode="Single"
+                                    SelectionChanged="OnCourseSelected"
+                                    EmptyView="No courses to display.">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="5" Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Name:" VerticalTextAlignment="Center" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding CourseName}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                                    <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Start Date:" VerticalTextAlignment="Center" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding StartDate, StringFormat='{0:M/dd/yyyy}'}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                                    <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="End Date:" VerticalTextAlignment="Center" />
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding EndDate, StringFormat='{0:M/dd/yyyy}'}" FontSize="Medium" VerticalTextAlignment="Center" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Padding="10" Spacing="10">
+                <Button Text="Edit Term" Clicked="EditTermButton_OnClicked" />
+                <Button Text="Delete Term" Clicked="DeleteTermButton_OnClicked" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

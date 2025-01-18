@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C868_WGU_Tallis_Jordan.Views.TermAdd"
+             Title="Add Term">
+
+    <NavigationPage.TitleView>
+        <Label FontSize="24" Text="Add Term" TextColor="Black" />
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0" Padding="10" BackgroundColor="WhiteSmoke">
+                <Grid ColumnSpacing="10" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Name" />
+                    <Entry x:Name="TermName" Grid.Row="0" Grid.Column="1" Placeholder="Enter Term Name" />
+
+                    <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Start Date" />
+                    <DatePicker x:Name="StartDatePicker" Grid.Row="1" Grid.Column="1" />
+
+                    <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="End Date" />
+                    <DatePicker x:Name="EndDatePicker" Grid.Row="2" Grid.Column="1" />
+                </Grid>
+            </ScrollView>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Padding="10" Spacing="5">
+                <Button Text="Save Term" x:Name="SaveTerm" Clicked="SaveTerm_Clicked" />
+                <Button Text="Cancel" x:Name="CancelTerm" Clicked="CancelTerm_Clicked" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

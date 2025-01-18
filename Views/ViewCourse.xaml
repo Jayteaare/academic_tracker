@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C868_WGU_Tallis_Jordan.Views.ViewCourse"
+             Title="Course Details">
+
+    <NavigationPage.TitleView>
+        <Label FontSize="24" Text="Course Details" TextColor="Black" VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0" Padding="10">
+                <StackLayout Spacing="10">
+                    <Grid BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="5" Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Name:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding CourseName}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Start Date:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="End Date:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding EndDate, StringFormat='{0:MM/dd/yyyy}'}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Status:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Status}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Instructor Name:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding InstructorName}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="5" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Instructor Phone:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="5" Grid.Column="1" Text="{Binding InstructorPhone}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="6" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Instructor Email:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="6" Grid.Column="1" Text="{Binding InstructorEmail}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="7" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Notes:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="7" Grid.Column="1" Text="{Binding Notes}" FontSize="Medium" VerticalTextAlignment="Center" />
+
+                        <Label Grid.Row="8" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Notifications:" VerticalTextAlignment="Center" />
+                        <Label Grid.Row="8" Grid.Column="1" Text="{Binding NotificationsText}" FontSize="Medium" VerticalTextAlignment="Center" />
+                    </Grid>
+
+                    <Label FontSize="Large" Text="Assessments" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <CollectionView x:Name="AssessmentCollectionView"
+                                    ItemsSource="{Binding Assessments}"
+                                    EmptyView="No assessments to display."
+                                    SelectionMode="Single"
+                                    SelectionChanged="OnAssessmentSelected">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="5" Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Name:" VerticalTextAlignment="Center" />
+                                    <Label Grid.Row="0" Grid.Column="1" FontSize="Medium" Text="{Binding AssessName}" VerticalTextAlignment="Center" />
+
+                                    <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Type:" VerticalTextAlignment="Center" />
+                                    <Label Grid.Row="1" Grid.Column="1" FontSize="Small" Text="{Binding Type, StringFormat='{0} Assessment'}" VerticalTextAlignment="Center" />
+
+                                    <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Start Date:" VerticalTextAlignment="Center" />
+                                    <Label Grid.Row="2" Grid.Column="1" FontSize="Small" Text="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}" VerticalTextAlignment="Center" />
+
+                                    <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="End Date:" VerticalTextAlignment="Center" />
+                                    <Label Grid.Row="3" Grid.Column="1" FontSize="Small" Text="{Binding EndDate, StringFormat='{0:MM/dd/yyyy}'}" VerticalTextAlignment="Center" />
+
+                                    <Label Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Notifications:" VerticalTextAlignment="Center" />
+                                    <Label Grid.Row="4" Grid.Column="1" FontSize="Small" Text="{Binding NotificationsText}" VerticalTextAlignment="Center" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+
+            <Grid Grid.Row="1" Padding="10" ColumnSpacing="10" RowSpacing="10" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Share Note (Text)" Grid.Row="0" Grid.Column="0" Clicked="ShareNoteText_Clicked" />
+                <Button Text="Share Note (URI)" Grid.Row="0" Grid.Column="1" Clicked="ShareNoteUri_Clicked" />
+
+                <Button Text="Edit Course" Grid.Row="1" Grid.Column="0" Clicked="EditCourseButton_Clicked" />
+                <Button Text="Delete Course" Grid.Row="1" Grid.Column="1" Clicked="DeleteCourseButton_Clicked" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

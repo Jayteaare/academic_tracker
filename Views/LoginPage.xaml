@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C868_WGU_Tallis_Jordan.Views.LoginPage"
+             Title="Login">
+
+    <NavigationPage.TitleView>
+        <Label FontSize="24" Text="Login" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+
+            <Entry x:Name="UsernameEntry" Placeholder="Username" />
+
+            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+
+            <Button Text="Login" Clicked="OnLoginClicked" />
+
+            <StackLayout IsVisible="{Binding ShowRegisterButton}">
+                <Label Text="Don't have an account? Register below:" HorizontalOptions="Center" />
+                <Button Text="Register" Clicked="OnRegisterClicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C868_WGU_Tallis_Jordan.Views.AssessmentAdd"
+             Title="Add Assessment">
+
+    <NavigationPage.TitleView>
+        <Label FontSize="24" Text="Add Assessment" TextColor="Black" VerticalTextAlignment="Center" />
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <StackLayout Padding="10" Spacing="10">
+                    <Grid BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Assessment Name" />
+                        <Entry x:Name="AssessmentName" Grid.Row="0" Grid.Column="1" Placeholder="Enter Assessment Name" />
+
+                        <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Type" />
+                        <Picker x:Name="AssessmentTypePicker" Title="Select Type" Grid.Row="1" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Objective</x:String>
+                                    <x:String>Performance</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+
+                        <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Start Date" />
+                        <DatePicker x:Name="StartDatePicker" Grid.Row="2" Grid.Column="1" />
+
+                        <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="End Date" />
+                        <DatePicker x:Name="EndDatePicker" Grid.Row="3" Grid.Column="1" />
+
+                        <Label Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center" Text="Notifications" />
+                        <Switch x:Name="Notifications" Grid.Row="4" Grid.Column="1" HorizontalOptions="End" IsToggled="True" />
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" Padding="10" Spacing="10">
+                <Button Text="Save" x:Name="SaveAssessmentButton" Clicked="SaveAssessment_Clicked" />
+                <Button Text="Cancel" x:Name="CancelAssessmentButton" Clicked="CancelAssessment_Clicked" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
